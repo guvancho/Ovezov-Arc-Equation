@@ -1,46 +1,36 @@
-# Ovezov-Arc-Equation
+* **Project Name**: Ovezov-Arc-Equation
+* **Concept**: A direct analytical solution for calculating arc length ($P$) based on chord ($L$) and height ($h$).
 
-## Precision Arc Length Calculation via Chord and Sagitta
+* **💡 The Equation**:
+  $$P = \frac{2(h^2 + 0.25L^2)}{h} \arcsin\left(\frac{h}{\sqrt{h^2 + 0.25L^2}}\right)$$
+  * **L**: Chord length (measurable distance between ends)
+  * **h**: Height of the segment (Sagitta)
+  * **P**: Resulting Arc Length
 
-### 🎯 Overview
-The **Ovezov-Arc-Equation** is a direct analytical solution for determining the length of a circular arc ($P$) using only two physically measurable parameters: the **Chord ($L$)** and the **Height/Sagitta ($h$)**.
+* **🚀 Key Advantages**:
+    * **Zero-Radius Dependency**: No need to locate the circle's center.
+    * **Numerical Stability**: Robust results even for near-straight lines ($h \to 0$).
+    * **Hardware Optimized**: Ideal for STM32, Arduino, and real-time robotics.
 
-In practical engineering — whether in CNC machining, robotics, or architecture — measuring the radius or locating the center of a circle is often difficult or impossible. This equation provides a "math-to-metal" bridge, allowing for laboratory-grade precision using only field measurements.
+* **🛠 Practical Implementation**:
+    * **Python**:
+    ```python
+    import math
+    def ovezov_arc_length(L, h):
+        if h == 0: return float(L)
+        return (2 * (h**2 + 0.25 * L**2) / h) * math.asin(h / math.sqrt(h**2 + 0.25 * L**2))
 
+    # Example: Chord = 100, Height = 10
+    print(f"Arc Length: {ovezov_arc_length(100, 10):.8f}")
+    ```
+    * **C++**: [Download ovezov_arc.hpp](./ovezov_arc.hpp)
 
+* **✅ Validation (CAD Benchmarking)**:
+    * **Industry Standard**: Tested against **AutoCAD** geometry engine.
+    * **Input**: $L = 100$, $h = 10$.
+    * **AutoCAD Result**: `102.64569112`
+    * **Ovezov Result**: `102.64569112`
+    * **Verdict**: 100% precision match up to 8 decimal places.
 
-### 💡 The Equation
-Based on geometric invariants and the principle of similar triangles, the equation expresses arc length ($P$) in a single, atomic step:
-
-$$P = \frac{2(h^2 + 0.25L^2)}{h} \arcsin\left(\frac{h}{\sqrt{h^2 + 0.25L^2}}\right)$$
-
-Where:
-* **L** = Chord length (linear distance between arc ends)
-* **h** = Height of the segment (Sagitta)
-* **P** = Resulting Arc Length
-
-### 🚀 Why Use This?
-* **Zero-Radius Dependency:** No need to calculate or know the radius ($R$) or the central angle.
-* **Hardware Optimized:** Minimal register usage and fixed execution time (deterministic), which is critical for **Real-Time Systems** and **Microcontrollers** (STM32, Arduino, ESP32).
-* **Numerical Stability:** Unlike multi-step methods, this analytical form remains robust even for extremely small $h$ (near-zero curvature), avoiding the precision "drift" common in iterative algorithms.
-
-### 🛠 Practical Implementation
-
-#### Python
-```python
-import math
-
-def ovezov_arc_length(L, h):
-    """
-    Calculates arc length directly from chord L and height h.
-    Handles the edge case of a straight line (h=0).
-    """
-    if h == 0: 
-        return float(L)
-    
-    # Direct implementation of the Ovezov Equation
-    return (2 * (h**2 + 0.25 * L**2) / h) * math.asin(h / math.sqrt(h**2 + 0.25 * L**2))
-
-# Example: Chord = 100mm, Height = 10mm
-result = ovezov_arc_length(100, 10)
-print(f"Arc Length: {result:.8f} mm")
+* **🌍 Applications**: Robotics, CNC trajectory planning, and architectural geometry.
+* **📜 License**: MIT
