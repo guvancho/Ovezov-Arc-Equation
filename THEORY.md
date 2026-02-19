@@ -90,9 +90,9 @@ A distinctive feature of the **Ovezov Arc Equation**, separating it from classic
 
 While the classic radius-based methods are primarily designed for minor arcs (where angle < 180°), the Ovezov Equation remains analytically valid for **any arc length**:
 
-* **Minor Arcs ($h < L/2$):** Provides superior precision (up to $10^{-11}$) where classical methods "flatline" due to floating-point limitations.
-* **Semicircles ($h = L/2$):** Calculates the length with zero singularities or division-by-zero errors.
-* **Major Arcs ($h > L/2$):** Successfully calculates arcs where the height exceeds the chord (angles up to 360°). Tests show that for extreme cases (e.g., $h=1000, L=100$), the Ovezov Equation matches **AutoCAD** results perfectly, whereas Legacy formulas fail with errors exceeding 3000%.
+* **Minor Arcs ($h < L$):** Provides superior precision (up to $10^{-11}$) where classical methods "flatline" due to floating-point limitations.
+* **Semicircles ($h = L$):** Calculates the length with zero singularities or division-by-zero errors.
+* **Major Arcs ($h > L$):** Successfully calculates arcs where the height exceeds the chord (angles up to 360°). Tests show that for extreme cases (e.g., $h=1000, L=100$), the Ovezov Equation matches **AutoCAD** results perfectly, whereas Legacy formulas fail with errors exceeding 3000%.
 
 
 ---
