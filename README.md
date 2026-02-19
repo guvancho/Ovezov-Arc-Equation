@@ -1,6 +1,8 @@
 * **Project Name**: Ovezov-Arc-Equation
 * **Concept**: A direct analytical solution for calculating arc length ($P$) based on chord ($L$) and height ($h$).
 
+* [![Theory](https://img.shields.io/badge/Documentation-Mathematical_Theory-blue?style=for-the-badge&logo=googlesheets)](./THEORY.md)
+
 * **💡 The Equation**:
   $$P = \frac{2(h^2 + 0.25L^2)}{h} \arcsin\left(\frac{h}{\sqrt{h^2 + 0.25L^2}}\right)$$
   * **L**: Chord length (measurable distance between ends)
