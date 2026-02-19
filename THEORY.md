@@ -74,3 +74,20 @@ $$P = \frac{2(h^2 + 0.25L^2)}{h} \arcsin\left(\frac{h}{\sqrt{h^2 + 0.25L^2}}\rig
 
 ---
 *For practical implementation details, please refer to the [README.md](./README.md).*
+
+---
+
+### History and Origins
+
+The development of the Ovezov Arc Equation began several years ago. The first public discussion and detailed explanation of the logic were featured in a technical article on **isicad**, one of the leading platforms for CAD and engineering expertise.
+
+---
+
+### History and Origins
+
+The development of the Ovezov Arc Equation was first introduced to the professional CAD community in early 2024. The mathematical logic and the quest for a direct solution were detailed in a technical publication on **isicad.ru**, a leading platform for engineering and PLM expertise.
+
+You can read the original article here (in Russian):
+🔗 [Длина дуги — поиски универсальной формулы](https://isicad.ru/ru/articles.php?article_num=23008)
+
+This GitHub repository serves as the official implementation of the theory described in the article, providing ready-to-use code for modern engineering workflows.
