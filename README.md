@@ -9,10 +9,15 @@
   * **h**: Height of the segment (Sagitta)
   * **P**: Resulting Arc Length
 
-* **🚀 Key Advantages**:
-    * **Zero-Radius Dependency**: No need to locate the circle's center.
-    * **Numerical Stability**: Robust results even for near-straight lines ($h \to 0$).
-    * **Hardware Optimized**: Ideal for STM32, Arduino, and real-time robotics.
+### 🚀 Key Advantages
+
+* **Zero-Radius Dependency**: Eliminates the need to locate the circle's center or handle massive radius values in memory.
+* **Total Geometric Versatility**:
+    * **Near-Flat Lines ($L \gg h$):** Maintains extreme precision (up to $10^{-11}$) where classical methods "flatline" and return zero curvature.
+    * **Standard Arcs ($L = h$):** Perfectly handles deep segments (angles $> 180^\circ$) without requiring additional logic or sign checks.
+    * **"Needle" Geometries ($L \ll h$):** Remains analytically stable for extreme vertical arcs where height vastly exceeds the base.
+* **Numerical Stability**: Effectively bypasses "catastrophic cancellation" errors common in standard $R = \frac{h}{2} + \frac{L^2}{8h}$ calculations.
+* **Hardware Optimized**: Extremely lightweight and efficient on the instruction level, making it the ideal choice for **STM32**, **Arduino**, and real-time robotics where CPU cycles and precision are critical.
 
 * **🛠 Practical Implementation**:
     * **Python**:
