@@ -2,7 +2,12 @@
 
 This document provides a step-by-step mathematical derivation of the Ovezov Equation, explaining how it eliminates the need for radius and central angle measurements.
 
-![Ovezov Arc Geometry Scheme](./docs/img/Arc_length_properties.png)
+<div align="center">
+  <a href="./docs/img/Arc_length_properties.png" target="_blank">
+    <img src="./docs/img/Arc_length_properties.png" width="450" alt="Ovezov Arc Geometry Scheme">
+  </a>
+  <p><strong>Figure 1</strong> — <em>Geometric properties of a circular segment</em></p>
+</div>
 
 
 ### 1. The Geometry of a Circular Segment
@@ -71,6 +76,24 @@ $$P = \frac{2(h^2 + 0.25L^2)}{h} \arcsin\left(\frac{h}{\sqrt{h^2 + 0.25L^2}}\rig
 * **Singularity Handling**: As $h \to 0$, the formula gracefully approaches the length of the chord $L$.
 * **Precision**: Matches **AutoCAD** industry standards up to 8 decimal places.
 * **Efficiency**: No iterative loops, making it ideal for microcontrollers.
+
+### 5. Universal Range and Angle Stability
+
+<div align="center">
+  <a href="./docs/img/Ovezov_Arc_Equation_h_more_than_L.png" target="_blank">
+    <img src="./docs/img/Ovezov_Arc_Equation_h_more_than_L.png" width="400" alt="Ovezov Arc Geometry Universal Range">
+  </a>
+  <p><strong>Figure 2</strong> — <em>Validation of the Ovezov Equation for major arcs (h > L)</em></p>
+</div>
+
+A distinctive feature of the **Ovezov Arc Equation**, separating it from classical radius-based methods, is its stability across the entire geometric range of a circle. 
+
+While the classic radius-based methods are primarily designed for minor arcs (where angle < 180°), the Ovezov Equation remains analytically valid for **any arc length**:
+
+* **Minor Arcs ($h < L/2$):** Provides superior precision (up to $10^{-11}$) where classical methods "flatline" due to floating-point limitations.
+* **Semicircles ($h = L/2$):** Calculates the length with zero singularities or division-by-zero errors.
+* **Major Arcs ($h > L/2$):** Successfully calculates arcs where the height exceeds the chord (angles up to 360°). Tests show that for extreme cases (e.g., $h=1000, L=100$), the Ovezov Equation matches **AutoCAD** results perfectly, whereas Legacy formulas fail with errors exceeding 3000%.
+
 
 ---
 *For practical implementation details, please refer to the [README.md](./README.md).*
